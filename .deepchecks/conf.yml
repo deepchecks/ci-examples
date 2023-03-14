@@ -3,4 +3,3 @@ runs-on: ubuntu-latest
 whoisking: itay
 
 on:
-  push: [main]
