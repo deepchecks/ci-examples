@@ -64,6 +64,7 @@ def get_test_ds():
     return test_ds
 
 
+
 # can either train here model and then save it and be able to predict, or just load a saved model
 def load_model():
     download_titanic_file(MODEL_FILENAME)
