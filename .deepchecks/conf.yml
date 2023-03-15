@@ -1,6 +1,6 @@
 
 runs-on: ubuntu-latest
-whoisking: itay5654ffhn
+whoisking: itay5654ffh
 
 on:
   push: ['main']
