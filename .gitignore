@@ -132,7 +132,7 @@ dmypy.json
 .DS_Store
 
 # data files:
-example_data/*
+verify_run/example_data/*
 
 # vscode local files
 .vscode
