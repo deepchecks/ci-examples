@@ -4,3 +4,4 @@ whoisking: itay
 test: truefd
 on:
   push: ['main']
+  pull_request: ['main']
