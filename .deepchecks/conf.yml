@@ -1,6 +1,6 @@
 runs-on: ubuntu-latest
 whoisking: itay
-test: truefdfff
+test: truefdffff
 on:
   push: ['main']
   pull_request: ['main']
