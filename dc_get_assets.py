@@ -11,7 +11,7 @@ import os.path as osp
 
 
 BUCKET_NAME = 'deepchecks-public' 
-PATH = 'datasets/titanic' 
+BUCKET_KEY_BASE = 'datasets/titanic' 
 
 TRAIN_FILENAME = "titanic_train.csv"
 TEST_FILENAME = "titanic_test.csv"
@@ -31,39 +31,43 @@ dataset_metadata = {'cat_features' : ['Pclass', 'Sex', 'SibSp', 'Parch', 'Embark
                     'label_type':'binary'}
 
 
-def download_titanic_files():
+
+def download_titanic_file(filename):
+    
+    # create folder for download if doesn't exist
+    Path(OUTPUT_DATA_DIR).mkdir(parents=True, exist_ok=True)
 
     s3 = boto3.resource('s3')
-
-    files_to_download = [TRAIN_FILENAME, TEST_FILENAME, MODEL_FILENAME]
-
-    for filename in files_to_download:
-        try:
-            with open(osp.join(OUTPUT_DATA_DIR, filename), 'wb') as data:
-                s3.Bucket(BUCKET_NAME).download_fileobj(osp.join(PATH, filename), data)
+    try:
+        with open(Path(OUTPUT_DATA_DIR, filename), 'wb') as data:
+            s3.Bucket(BUCKET_NAME).download_fileobj(str(Path(BUCKET_KEY_BASE, filename)), data)
 
 
-        except botocore.exceptions.ClientError as e: 
-            if e.response['Error']['Code'] == "404":
-                print("The object does not exist.")
-            else:
-                raise e
+    except botocore.exceptions.ClientError as e: 
+        if e.response['Error']['Code'] == "404":
+            print("The object does not exist.")
+        else:
+            raise e
 
 
 def get_train_ds():
+    download_titanic_file(TRAIN_FILENAME)
     train_data = pd.read_csv(TRAIN_FILE)
     train_ds = dct.Dataset(train_data, **dataset_metadata)
     return train_ds
 
 
 def get_test_ds():
+    download_titanic_file(TEST_FILENAME)
     test_data = pd.read_csv(TEST_FILE)
     test_ds = dct.Dataset(test_data, **dataset_metadata)
     return test_ds
 
 
+
 # can either train here model and then save it and be able to predict, or just load a saved model
 def load_model():
+    download_titanic_file(MODEL_FILENAME)
     model = joblib.load(MODEL_FILE)
     return model
 
