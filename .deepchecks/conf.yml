@@ -1,6 +1,5 @@
 
 runs-on: ubuntu-latest
-
 on:
   push: ['main']
   pull_request: ['main']
