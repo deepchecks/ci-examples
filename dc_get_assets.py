@@ -59,6 +59,7 @@ def get_train_ds():
 def get_test_ds():
     download_titanic_file(TEST_FILENAME)
     test_data = pd.read_csv(TEST_FILE)
+    test_data['Survived'] = test_data['Survived'].sample(frac=1)
     test_ds = dct.Dataset(test_data, **dataset_metadata)
     return test_ds
 
