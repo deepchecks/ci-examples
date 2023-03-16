@@ -5,8 +5,9 @@ import sys
 
 # append to path parent folder in order to import
 import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(dir_path))
+dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+print(dir_path)
+sys.path.append(dir_path)
 import dc_get_assets
 
 
