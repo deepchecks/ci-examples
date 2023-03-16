@@ -1,6 +1,5 @@
 
 runs-on: ubuntu-latest
-whoisking: itay
 
 on:
   push: ['main']
@@ -12,4 +11,3 @@ job:
     train_dataset: 'dc_get_assets.py:get_train_ds'
     test_dataset: 'dc_get_assets.py:get_test_ds'
     model: 'dc_get_assets.py:load_model'
-    
