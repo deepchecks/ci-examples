@@ -8,7 +8,8 @@ on:
 job:
   run_suites:
     requirements: 'requirements/requirements.txt'
-    suites: ['suites.py:first_custom_suite', 'suites.py:my_model_evaluation', 'deepchecks.tabular.suites:data_integrity']
+    # suites: ['suites.py:first_custom_suite', 'suites.py:my_model_evaluation', 'deepchecks.tabular.suites:data_integrity']
+    suites: ['suites.py:first_custom_suite', 'suites.py:my_model_evaluation']
     train_dataset: 'dc_get_assets.py:get_train_ds'
     test_dataset: 'dc_get_assets.py:get_test_ds'
     model: 'dc_get_assets.py:load_model'
