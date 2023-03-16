@@ -25,8 +25,7 @@ TEST_FILE = Path(OUTPUT_DATA_DIR).joinpath(TEST_FILENAME)
 
 
 
-dataset_metadata = {'cat_features' : ['Pclass', 'Sex', 'SibSp', 'Parch', 'Embarked'],
-                    'index_name': 'PassengerId',
+dataset_metadata = {'cat_features' : ['Pclass', 'SibSp', 'Parch', 'Sex_male'],
                     'label':'Survived',
                     'label_type':'binary'}
 
