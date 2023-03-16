@@ -45,5 +45,7 @@ def main():
     results=load_and_run(manual_suites_selection)
     return results
 
+
+
 if __name__ == "__main__":
     main()
