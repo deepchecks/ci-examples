@@ -50,22 +50,22 @@ def download_titanic_file(filename):
             raise e
 
 
-def get_train_ds():
+def get_train_dataset():
     download_titanic_file(TRAIN_FILENAME)
     train_data = pd.read_csv(TRAIN_FILE)
-    train_ds = dct.Dataset(train_data, **dataset_metadata)
-    return train_ds
+    train_dataset = dct.Dataset(train_data, **dataset_metadata)
+    return train_dataset
 
 
 
-def get_test_ds():
+def get_test_dataset():
     download_titanic_file(TEST_FILENAME)
     test_data = pd.read_csv(TEST_FILE)
     # demonstrating that for for optimization, numpy was used for processing in pipeline,
     # and as last step - inserted back to dataframe
-    # test_data['Survived'] = np.array(test_data['Survived'].sample(frac=1))
-    test_ds = dct.Dataset(test_data, **dataset_metadata)
-    return test_ds
+    test_data['Survived'] = np.array(test_data['Survived'].sample(frac=1))
+    test_dataset = dct.Dataset(test_data, **dataset_metadata)
+    return test_dataset
 
 
 def load_model(train_dataset=None):
