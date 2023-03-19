@@ -1,4 +1,4 @@
-runs-on: ubuntu-latest
+runsOn: ubuntu-latest
 on:
   push: ['main']
   pull_request: ['main']
