@@ -11,19 +11,17 @@ from pathlib import Path
 import os.path as osp
 
 
+#### constant file names ####
 BUCKET_NAME = 'deepchecks-public' 
 BUCKET_KEY_BASE = 'datasets/titanic' 
-
 TRAIN_FILENAME = "titanic_train.csv"
 TEST_FILENAME = "titanic_test.csv"
 MODEL_FILENAME = "titanic_rf.model"
-
 OUTPUT_DATA_DIR = "example_data"
-
 MODEL_FILE = Path(OUTPUT_DATA_DIR, MODEL_FILENAME)
 TRAIN_FILE = Path(OUTPUT_DATA_DIR, TRAIN_FILENAME)
 TEST_FILE = Path(OUTPUT_DATA_DIR).joinpath(TEST_FILENAME)
-
+################
 
 
 dataset_metadata = {'cat_features' : ['Pclass', 'SibSp', 'Parch', 'Sex_male'],
@@ -55,7 +53,6 @@ def get_train_dataset():
     train_data = pd.read_csv(TRAIN_FILE)
     train_dataset = dct.Dataset(train_data, **dataset_metadata)
     return train_dataset
-
 
 
 def get_test_dataset():

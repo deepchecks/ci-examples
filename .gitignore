@@ -137,5 +137,15 @@ example_data/*.model
 example_data/*.pickle
 suite_outputs/*
 
-# vscode local files
+# data files or suite outputs in the titanic training folder:
+train_model/*.csv
+train_model/*.html
+train_model/*.model
+train_model/example_data
+train_model/kaggle_titanic_data
+
+
+
+# vscode and ipynb local files
 .vscode
+.ipynb_checkpoints
