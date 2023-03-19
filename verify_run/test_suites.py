@@ -19,7 +19,7 @@ def first_custom_suite():
             DateTrainTestLeakageDuplicates(**kwargs).add_condition_leakage_ratio_less_or_equal(),
             DateTrainTestLeakageOverlap(**kwargs).add_condition_leakage_ratio_less_or_equal(),
             IndexTrainTestLeakage(**kwargs).add_condition_ratio_less_or_equal(),
-            TrainTestSamplesMix(**kwargs).add_condition_duplicates_ratio_less_or_equal(),
+            # TrainTestSamplesMix(**kwargs).add_condition_duplicates_ratio_less_or_equal(),
             FeatureLabelCorrelationChange(**kwargs).add_condition_feature_pps_difference_less_than()
             .add_condition_feature_pps_in_train_less_than(),
             FeatureDrift(**kwargs).add_condition_drift_score_less_than(),

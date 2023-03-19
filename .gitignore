@@ -131,8 +131,9 @@ dmypy.json
 # mac local files:
 .DS_Store
 
-# data files:
-verify_run/example_data/*
+# data files or suite outputs:
+example_data/*
+suite_outputs/*
 
 # vscode local files
 .vscode
