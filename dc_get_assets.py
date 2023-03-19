@@ -55,9 +55,11 @@ def get_train_dataset():
 def get_test_dataset():
     download_titanic_file(TEST_FILENAME)
     test_data = pd.read_csv(TEST_FILE)
-    # demonstrating that for for optimization, numpy was used for processing in pipeline,
+    # demonstrating that for optimization purposes,
+    #DataFrame was converted to numpy was used for processing in pipeline,
     # and then inserted back to DataFrame    
-    # test_data[dataset_metadata['label']] = np.array(test_data[dataset_metadata['label']].sample(frac=1))
+    test_data[dataset_metadata['label']] = np.array(
+        test_data[dataset_metadata['label']].sample(frac=1))
     test_dataset = dct.Dataset(test_data, **dataset_metadata)
     return test_dataset
 
