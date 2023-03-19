@@ -132,7 +132,9 @@ dmypy.json
 .DS_Store
 
 # data files or suite outputs:
-example_data/*
+example_data/*.csv
+example_data/*.model
+example_data/*.pickle
 suite_outputs/*
 
 # vscode local files

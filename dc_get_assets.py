@@ -4,6 +4,7 @@ import botocore
 
 import deepchecks.tabular as dct
 import joblib
+import numpy as np
 import pandas as pd
 
 from pathlib import Path
@@ -60,17 +61,14 @@ def get_train_ds():
 def get_test_ds():
     download_titanic_file(TEST_FILENAME)
     test_data = pd.read_csv(TEST_FILE)
-    test_data['Survived'] = test_data['Survived'].sample(frac=1)
+    # demonstrating that for for optimization, numpy was used for processing in pipeline,
+    # and as last step - inserted back to dataframe
+    test_data['Survived'] = np.array(test_data['Survived'].sample(frac=1))
     test_ds = dct.Dataset(test_data, **dataset_metadata)
     return test_ds
 
-# from sklearn.ensemble import RandomForestClassifier 
 
-# model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
-# model.fit(new_train_ds.features_columns, new_train_ds.label_col)
-
-# can either train here model and then save it and be able to predict, or just load a saved model
-def load_model(train_dataset=None, **kwargs):
+def load_model(train_dataset=None):
     download_titanic_file(MODEL_FILENAME)
     model = joblib.load(MODEL_FILE)
     return model
