@@ -1,5 +1,6 @@
 import deepchecks.tabular as dct
 from deepchecks.tabular.suites import data_integrity
+from pathlib import Path
 import test_suites
 import sys 
 
@@ -43,6 +44,12 @@ def load_and_run(suites_to_run):
 def main():
     manual_suites_selection = [test_suites.first_custom_suite() ,test_suites.my_model_evaluation(), data_integrity()]
     results=load_and_run(manual_suites_selection)
+    
+    # temporarily: save suite outputs also locally
+    suites_output_dir = "suite_outputs"
+    Path(suites_output_dir).mkdir(exist_ok=True)
+    [result.save_as_html(str(Path(suites_output_dir, result.name))) for result in results]
+    
     return results
 
 if __name__ == "__main__":

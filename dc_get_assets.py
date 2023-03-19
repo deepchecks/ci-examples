@@ -25,8 +25,7 @@ TEST_FILE = Path(OUTPUT_DATA_DIR).joinpath(TEST_FILENAME)
 
 
 
-dataset_metadata = {'cat_features' : ['Pclass', 'Sex', 'SibSp', 'Parch', 'Embarked'],
-                    'index_name': 'PassengerId',
+dataset_metadata = {'cat_features' : ['Pclass', 'SibSp', 'Parch', 'Sex_male'],
                     'label':'Survived',
                     'label_type':'binary'}
 
@@ -57,16 +56,21 @@ def get_train_ds():
     return train_ds
 
 
+
 def get_test_ds():
     download_titanic_file(TEST_FILENAME)
     test_data = pd.read_csv(TEST_FILE)
+    test_data['Survived'] = test_data['Survived'].sample(frac=1)
     test_ds = dct.Dataset(test_data, **dataset_metadata)
     return test_ds
 
+# from sklearn.ensemble import RandomForestClassifier 
 
+# model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
+# model.fit(new_train_ds.features_columns, new_train_ds.label_col)
 
 # can either train here model and then save it and be able to predict, or just load a saved model
-def load_model():
+def load_model(train_dataset=None, **kwargs):
     download_titanic_file(MODEL_FILENAME)
     model = joblib.load(MODEL_FILE)
     return model
