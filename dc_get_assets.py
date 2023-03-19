@@ -1,17 +1,14 @@
 
 import boto3
 import botocore
-
 import deepchecks.tabular as dct
 import joblib
 import numpy as np
 import pandas as pd
-
 from pathlib import Path
-import os.path as osp
 
 
-#### constant file names ####
+######## File names ############
 BUCKET_NAME = 'deepchecks-public' 
 BUCKET_KEY_BASE = 'datasets/titanic' 
 TRAIN_FILENAME = "titanic_train.csv"
@@ -21,7 +18,7 @@ OUTPUT_DATA_DIR = "example_data"
 MODEL_FILE = Path(OUTPUT_DATA_DIR, MODEL_FILENAME)
 TRAIN_FILE = Path(OUTPUT_DATA_DIR, TRAIN_FILENAME)
 TEST_FILE = Path(OUTPUT_DATA_DIR).joinpath(TEST_FILENAME)
-################
+###############################
 
 
 dataset_metadata = {'cat_features' : ['Pclass', 'SibSp', 'Parch', 'Sex_male'],
@@ -59,8 +56,8 @@ def get_test_dataset():
     download_titanic_file(TEST_FILENAME)
     test_data = pd.read_csv(TEST_FILE)
     # demonstrating that for for optimization, numpy was used for processing in pipeline,
-    # and as last step - inserted back to dataframe
-    # test_data['Survived'] = np.array(test_data['Survived'].sample(frac=1))
+    # and then inserted back to DataFrame
+    test_data['Survived'] = np.array(test_data['Survived'].sample(frac=1))
     test_dataset = dct.Dataset(test_data, **dataset_metadata)
     return test_dataset
 

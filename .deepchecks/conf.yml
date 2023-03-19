@@ -10,8 +10,8 @@ job:
     test_dataset: 'dc_get_assets.py:get_test_dataset'
     model: 'dc_get_assets.py:load_model'
 
-    # suites: ['suites.py:my_model_evaluation', 'deepchecks.tabular.suites:data_integrity']
-    suites: ['suites.py:my_model_evaluation']
+    # suites: ['suites.py:validation_custom_suite', 'deepchecks.tabular.suites:data_integrity']
+    suites: ['basic_model_suite.py:my_model_evaluation']
     
 
 
