@@ -1,4 +1,5 @@
 runs-on: ubuntu-latest
+
 on:
   push: ['main']
   pull_request: ['main']
@@ -12,6 +13,3 @@ job:
 
     # suites: ['suites.py:validation_custom_suite', 'deepchecks.tabular.suites:data_integrity']
     suites: ['basic_model_suite.py:my_model_evaluation']
-    
-
-
