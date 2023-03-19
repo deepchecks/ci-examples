@@ -49,7 +49,7 @@ def my_model_evaluation():
 
 
 
-def first_train_test_validation_suite():
+def validation_custom_suite():
     kwargs = {}
     return Suite(
             'My Train Test Validation Suite',
